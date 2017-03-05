@@ -1,7 +1,9 @@
 var proto = {
-  sentence: 4,
-  probation: 2
-};
+      sentence: 4,
+      probation: 2
+    },
+    firstPrisoner,
+    secondPrisoner;
 
 var makePrisoner = function(name, id) {
   var p = Object.create(proto);
@@ -10,8 +12,8 @@ var makePrisoner = function(name, id) {
   return p;
 }
 
-var firstPrisoner = makePrisoner('Joe', '12A');
-var secondPrisoner = makePrisoner('Sam', '2BC');
+firstPrisoner = makePrisoner('Joe', '12A');
+secondPrisoner = makePrisoner('Sam', '2BC');
 
 console.log(firstPrisoner);
 console.log(firstPrisoner.sentence);

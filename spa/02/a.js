@@ -1,7 +1,9 @@
 var proto = {
-  sentence: 4,
-  probation: 2
-};
+      sentence: 4,
+      probation: 2
+    },
+    firstPrisoner,
+    secondPrisoner;
 
 var Prisoner = function(name, id) {
   this.name = name;
@@ -9,8 +11,8 @@ var Prisoner = function(name, id) {
 };
 Prisoner.prototype = proto;
 
-var firstPrisoner = new Prisoner('Joe', '12A');
-var secondPrisoner = new Prisoner('Sam', '2BC');
+firstPrisoner = new Prisoner('Joe', '12A');
+secondPrisoner = new Prisoner('Sam', '2BC');
 
 console.log(firstPrisoner);
 console.log(firstPrisoner.sentence);
