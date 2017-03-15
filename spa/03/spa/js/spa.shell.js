@@ -72,6 +72,8 @@ spa.shell = (function() {
       $.uriAnchor.setAnchor(stateMap.anchor_map, null, true);
       bool_return = false;
     }
+
+    return bool_return;
   };
 
   onHashchange = function(event) {
