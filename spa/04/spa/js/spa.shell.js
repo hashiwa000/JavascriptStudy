@@ -184,14 +184,14 @@ spa.shell = (function() {
     $container.html(configMap.main_html);
     setJqueryMap();
 
-    stateMap.is_chat_retracted = true;
-    jqueryMap.$chat
-      .attr('title', configMap.chat_retracted_title)
-      .click(onClickChat);
+    //stateMap.is_chat_retracted = true;
+    //jqueryMap.$chat
+    //  .attr('title', configMap.chat_retracted_title)
+    //  .click(onClickChat);
 
-    $.uriAnchor.configModule({
-      schema_map: configMap.anchor_schema_map
-    });
+    //$.uriAnchor.configModule({
+    //  schema_map: configMap.anchor_schema_map
+    //});
 
     spa.chat.configModule({});
     spa.chat.initModule(jqueryMap.$chat);
