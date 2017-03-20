@@ -20,12 +20,14 @@ spa.util = (function (){
 
     for (key_name in input_map) {
       if (input_map.hasOwnProperty(key_name)) {
-        config_map[key_name] = input_map[key_name];
-      } else {
-        error = makeError('Bad Input',
-            'Setting config key |' + key_name + '| is not supported');
+        if (settable_map.hasOwnProperty(key_name)) {
+          config_map[key_name] = input_map[key_name];
+        } else {
+          error = makeError('Bad Input',
+              'Setting config key |' + key_name + '| is not supported');
+          throw error;
+        }
       }
-      throw error;
     }
   };
 

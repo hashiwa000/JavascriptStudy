@@ -19,8 +19,8 @@ spa.chat = (function() {
       settable_map: {
         slider_open_time: true,
         slider_close_time: true,
-        slider_open_em: true,
-        slider_close_em: true,
+        slider_opened_em: true,
+        slider_closed_em: true,
         slider_open_title: true,
         slider_close_title: true,
         chat_model: true,
@@ -29,8 +29,8 @@ spa.chat = (function() {
       },
       slider_open_time: 250,
       slider_close_time: 250,
-      slider_open_em: 16,
-      slider_close_em: 2,
+      slider_opened_em: 16,
+      slider_closed_em: 2,
       slider_open_title: 'Click to close',
       slider_close_title: 'Click to open',
       chat_model: null,
@@ -53,7 +53,7 @@ spa.chat = (function() {
     return Number(
         getComputedStyle(elem, '').fontSize.match(/\d*\.?\d*/)[0]
     );
-  }
+  };
 
   setJqueryMap = function() {
     var
@@ -73,15 +73,16 @@ spa.chat = (function() {
   };
 
   setPxSizes = function() {
-    var
-      px_per_em = getEmSize(jqueryMap.$slider.get(0)),
-      opened_height_em = configMap.slider_opened_em,
-      closed_height_em = configMap.slider_closed_em;
+    var px_per_em, opened_height_em;
+    px_per_em = getEmSize(jqueryMap.$slider.get(0));
+
+    opened_height_em = configMap.slider_opened_em;
 
     stateMap.px_per_em = px_per_em;
-    stateMap.slider_closed_px = closed_height_em * px_per_em;
+    stateMap.slider_closed_px = configMap.slider_closed_em * px_per_em;
     stateMap.slider_opened_px = opened_height_em * px_per_em;
-    jqueryMap.$slider.css({
+
+    jqueryMap.$sizer.css({
       height: (opened_height_em - 2) * px_per_em
     });
   };
@@ -141,13 +142,13 @@ spa.chat = (function() {
       set_chat_anchor('opened');
     }
     return false;
-  }
+  };
 
   configModule = function(input_map) {
     spa.util.setConfigMap({
       input_map: input_map,
-      settableMap: configMap.settable_map,
-      configMap: configMap
+      settable_map: configMap.settable_map,
+      config_map: configMap
     });
     return true;
   };
